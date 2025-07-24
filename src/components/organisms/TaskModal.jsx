@@ -15,24 +15,26 @@ const TaskModal = ({
   projectId,
   onSave 
 }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: "",
     description: "",
     priority: "medium",
     dueDate: "",
-    status: "todo"
+    status: "todo",
+    timeSpent: 0
   });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (task) {
+if (task) {
       setFormData({
         title: task.title || "",
         description: task.description || "",
         priority: task.priority || "medium",
         dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
-        status: task.status || "todo"
+        status: task.status || "todo",
+        timeSpent: task.timeSpent || 0
       });
     } else {
       setFormData({
@@ -40,7 +42,8 @@ const TaskModal = ({
         description: "",
         priority: "medium",
         dueDate: "",
-        status: "todo"
+        status: "todo",
+        timeSpent: 0
       });
     }
     setErrors({});
@@ -195,9 +198,24 @@ const TaskModal = ({
             value={formData.dueDate}
             onChange={handleChange}
             error={errors.dueDate}
-            min={new Date().toISOString().split("T")[0]}
+min={new Date().toISOString().split("T")[0]}
           />
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Time Spent (hours)
+            </label>
+            <Input
+              type="number"
+              name="timeSpent"
+              value={formData.timeSpent}
+              onChange={handleChange}
+              placeholder="0"
+              step="0.25"
+              min="0"
+              className="w-full"
+            />
+          </div>
           <div className="flex items-center justify-between pt-4 border-t border-gray-200">
             <div>
               {task && (

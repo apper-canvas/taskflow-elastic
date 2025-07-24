@@ -99,8 +99,18 @@ const KanbanBoard = ({
         console.error("Error updating task:", err);
       }
     }
-  };
+};
 
+  const handleTimeUpdate = async (taskId, newTime) => {
+    try {
+      await taskService.update(taskId, { timeSpent: newTime });
+      await loadTasks();
+      toast.success(`Time updated to ${newTime} hours`);
+    } catch (error) {
+      toast.error('Failed to update time');
+      console.error('Error updating time:', error);
+    }
+  };
   if (!project) {
     return (
       <div className={`flex-1 flex items-center justify-center bg-gradient-to-br from-gray-50 to-white ${className}`}>
@@ -226,9 +236,10 @@ const KanbanBoard = ({
                           exit={{ opacity: 0, scale: 0.8 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <TaskCard
+<TaskCard
                             task={task}
                             onClick={() => onTaskClick(task)}
+                            onTimeUpdate={handleTimeUpdate}
                           />
                         </motion.div>
                       ))}

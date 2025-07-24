@@ -27,12 +27,13 @@ class TaskService {
   async create(taskData) {
     await this.delay();
     const maxId = this.tasks.length > 0 ? Math.max(...this.tasks.map(t => t.Id)) : 0;
-    const newTask = {
+const newTask = {
       ...taskData,
       Id: maxId + 1,
       projectId: parseInt(taskData.projectId),
       createdAt: taskData.createdAt || new Date().toISOString(),
-      completedAt: taskData.status === "done" ? new Date().toISOString() : null
+      completedAt: taskData.status === "done" ? new Date().toISOString() : null,
+      timeSpent: taskData.timeSpent || 0
     };
     this.tasks.push(newTask);
     return { ...newTask };
@@ -45,10 +46,11 @@ class TaskService {
       throw new Error("Task not found");
     }
     
-    const updatedTask = {
+const updatedTask = {
       ...this.tasks[index],
       ...taskData,
-      projectId: parseInt(taskData.projectId || this.tasks[index].projectId)
+      projectId: parseInt(taskData.projectId || this.tasks[index].projectId),
+      timeSpent: taskData.timeSpent !== undefined ? taskData.timeSpent : this.tasks[index].timeSpent || 0
     };
 
     // Set completedAt when status changes to done

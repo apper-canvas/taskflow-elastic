@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@/components/atoms/Card";
 import Badge from "@/components/atoms/Badge";
 import ApperIcon from "@/components/ApperIcon";
@@ -10,8 +10,32 @@ const TaskCard = ({
   onDragStart,
   onDragEnd,
   onClick,
+  onTimeUpdate,
   className 
 }) => {
+  const [isEditingTime, setIsEditingTime] = useState(false);
+  const [timeInput, setTimeInput] = useState(task.timeSpent || 0);
+const handleTimeClick = (e) => {
+    e.stopPropagation();
+    setIsEditingTime(true);
+    setTimeInput(task.timeSpent || 0);
+  };
+
+  const handleTimeSubmit = async (e) => {
+    e.stopPropagation();
+    if (e.key === 'Enter' || e.type === 'blur') {
+      const newTime = Math.max(0, parseFloat(timeInput) || 0);
+      setIsEditingTime(false);
+      if (newTime !== task.timeSpent && onTimeUpdate) {
+        await onTimeUpdate(task.Id, newTime);
+      }
+    }
+    if (e.key === 'Escape') {
+      setIsEditingTime(false);
+      setTimeInput(task.timeSpent || 0);
+    }
+  };
+
   const getPriorityVariant = (priority) => {
     switch (priority) {
       case "high": return "high";
@@ -19,8 +43,15 @@ const TaskCard = ({
       case "low": return "low";
       default: return "default";
     }
-  };
+};
 
+  const formatTime = (hours) => {
+    if (hours === 0) return "0h";
+    if (hours < 1) return `${Math.round(hours * 60)}m`;
+    const h = Math.floor(hours);
+    const m = Math.round((hours - h) * 60);
+    return m > 0 ? `${h}h ${m}m` : `${h}h`;
+  };
   const isOverdue = task.dueDate && isAfter(new Date(), new Date(task.dueDate)) && task.status !== "done";
 
   const handleDragStart = (e) => {
@@ -76,6 +107,36 @@ const TaskCard = ({
         <div className="flex items-center">
           <ApperIcon name="Clock" className="h-3 w-3 mr-1" />
           <span>{format(new Date(task.createdAt), "MMM d")}</span>
+</div>
+        
+        {/* Time Tracking Widget */}
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+          <div className="flex items-center gap-2">
+            <ApperIcon name="Clock" size={14} className="text-gray-500" />
+            <span className="text-xs text-gray-500">Time:</span>
+          </div>
+          {isEditingTime ? (
+            <input
+              type="number"
+              value={timeInput}
+              onChange={(e) => setTimeInput(e.target.value)}
+              onBlur={handleTimeSubmit}
+              onKeyDown={handleTimeSubmit}
+              onClick={(e) => e.stopPropagation()}
+              className="w-16 px-1 py-0.5 text-xs border border-blue-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="0"
+              step="0.25"
+              min="0"
+              autoFocus
+            />
+          ) : (
+            <button
+              onClick={handleTimeClick}
+              className="px-2 py-1 text-xs bg-gray-50 hover:bg-gray-100 rounded transition-colors"
+            >
+              {formatTime(task.timeSpent || 0)}
+            </button>
+          )}
         </div>
       </div>
     </Card>
