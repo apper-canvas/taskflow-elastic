@@ -24,7 +24,7 @@ class TaskService {
     return this.tasks.filter(t => t.projectId === parseInt(projectId)).map(t => ({ ...t }));
   }
 
-  async create(taskData) {
+async create(taskData) {
     await this.delay();
     const maxId = this.tasks.length > 0 ? Math.max(...this.tasks.map(t => t.Id)) : 0;
 const newTask = {
@@ -33,13 +33,14 @@ const newTask = {
       projectId: parseInt(taskData.projectId),
       createdAt: taskData.createdAt || new Date().toISOString(),
       completedAt: taskData.status === "done" ? new Date().toISOString() : null,
-      timeSpent: taskData.timeSpent || 0
+      timeSpent: taskData.timeSpent || 0,
+      people: taskData.people || ""
     };
     this.tasks.push(newTask);
     return { ...newTask };
   }
 
-  async update(id, taskData) {
+async update(id, taskData) {
     await this.delay();
     const index = this.tasks.findIndex(t => t.Id === parseInt(id));
     if (index === -1) {
@@ -50,7 +51,8 @@ const updatedTask = {
       ...this.tasks[index],
       ...taskData,
       projectId: parseInt(taskData.projectId || this.tasks[index].projectId),
-      timeSpent: taskData.timeSpent !== undefined ? taskData.timeSpent : this.tasks[index].timeSpent || 0
+      timeSpent: taskData.timeSpent !== undefined ? taskData.timeSpent : this.tasks[index].timeSpent || 0,
+      people: taskData.people !== undefined ? taskData.people : this.tasks[index].people || ""
     };
 
     // Set completedAt when status changes to done

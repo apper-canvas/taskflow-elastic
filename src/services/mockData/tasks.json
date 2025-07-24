@@ -1,5 +1,5 @@
 [
-  {
+{
     "Id": 1,
     "projectId": 1,
     "title": "Create wireframes for homepage",
@@ -9,7 +9,8 @@
     "dueDate": "2024-02-15T00:00:00.000Z",
     "createdAt": "2024-01-15T10:30:00.000Z",
     "completedAt": "2024-02-14T15:20:00.000Z",
-    "timeSpent": 8.5
+    "timeSpent": 8.5,
+    "people": "John Smith"
   },
   {
     "Id": 2,

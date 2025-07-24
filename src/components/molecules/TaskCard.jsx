@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Card from "@/components/atoms/Card";
-import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
-import { cn } from "@/utils/cn";
 import { format, isAfter } from "date-fns";
+import { cn } from "@/utils/cn";
+import ApperIcon from "@/components/ApperIcon";
+import Badge from "@/components/atoms/Badge";
+import Card from "@/components/atoms/Card";
 
 const TaskCard = ({ 
   task, 
@@ -130,7 +130,7 @@ const handleTimeClick = (e) => {
               autoFocus
             />
           ) : (
-            <button
+<button
               onClick={handleTimeClick}
               className="px-2 py-1 text-xs bg-gray-50 hover:bg-gray-100 rounded transition-colors"
             >
@@ -138,6 +138,17 @@ const handleTimeClick = (e) => {
             </button>
           )}
         </div>
+        
+        {/* People Assignment */}
+        {task.people && (
+          <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100">
+            <div className="flex items-center gap-2">
+              <ApperIcon name="User" size={14} className="text-gray-500" />
+              <span className="text-xs text-gray-500">Assigned:</span>
+            </div>
+            <span className="text-xs text-gray-700 font-medium">{task.people}</span>
+          </div>
+        )}
       </div>
     </Card>
   );

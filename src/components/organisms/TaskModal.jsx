@@ -21,7 +21,8 @@ const [formData, setFormData] = useState({
     priority: "medium",
     dueDate: "",
     status: "todo",
-    timeSpent: 0
+    timeSpent: 0,
+    people: ""
   });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -34,16 +35,18 @@ if (task) {
         priority: task.priority || "medium",
         dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
         status: task.status || "todo",
-        timeSpent: task.timeSpent || 0
+        timeSpent: task.timeSpent || 0,
+        people: task.people || ""
       });
     } else {
-      setFormData({
+setFormData({
         title: "",
         description: "",
         priority: "medium",
         dueDate: "",
         status: "todo",
-        timeSpent: 0
+        timeSpent: 0,
+        people: ""
       });
     }
     setErrors({});
@@ -80,13 +83,12 @@ if (task) {
     try {
       setLoading(true);
       
-      const taskData = {
+const taskData = {
         ...formData,
         projectId: projectId,
         dueDate: formData.dueDate ? new Date(formData.dueDate).toISOString() : null,
         ...(task ? {} : { createdAt: new Date().toISOString() })
       };
-
       if (task) {
         await taskService.update(task.Id, taskData);
         toast.success("Task updated successfully!");
@@ -190,8 +192,7 @@ if (task) {
               <option value="done">Done</option>
             </Select>
           </div>
-
-          <Input
+<Input
             label="Due Date"
             name="dueDate"
             type="date"
@@ -199,6 +200,14 @@ if (task) {
             onChange={handleChange}
             error={errors.dueDate}
 min={new Date().toISOString().split("T")[0]}
+          />
+
+          <Input
+            label="Assigned To"
+            name="people"
+            value={formData.people}
+            onChange={handleChange}
+            placeholder="Enter assignee name..."
           />
 
           <div>
