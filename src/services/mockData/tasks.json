@@ -1,0 +1,167 @@
+[
+  {
+    "Id": 1,
+    "projectId": 1,
+    "title": "Create wireframes for homepage",
+    "description": "Design wireframes for the new homepage layout including hero section, features, and testimonials",
+    "status": "done",
+    "priority": "high",
+    "dueDate": "2024-02-15T00:00:00.000Z",
+    "createdAt": "2024-01-15T10:30:00.000Z",
+    "completedAt": "2024-02-14T15:20:00.000Z"
+  },
+  {
+    "Id": 2,
+    "projectId": 1,
+    "title": "Design color palette and typography",
+    "description": "Choose colors and fonts that align with brand guidelines and ensure accessibility",
+    "status": "done",
+    "priority": "medium",
+    "dueDate": "2024-02-18T00:00:00.000Z",
+    "createdAt": "2024-01-16T11:00:00.000Z",
+    "completedAt": "2024-02-17T14:30:00.000Z"
+  },
+  {
+    "Id": 3,
+    "projectId": 1,
+    "title": "Implement responsive navigation",
+    "description": "Build a mobile-friendly navigation system with hamburger menu and smooth transitions",
+    "status": "inprogress",
+    "priority": "high",
+    "dueDate": "2024-03-01T00:00:00.000Z",
+    "createdAt": "2024-02-01T09:15:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 4,
+    "projectId": 1,
+    "title": "Optimize images and assets",
+    "description": "Compress and optimize all images for faster loading times while maintaining quality",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2024-03-05T00:00:00.000Z",
+    "createdAt": "2024-02-05T14:20:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 5,
+    "projectId": 1,
+    "title": "Set up contact form",
+    "description": "Create and style contact form with validation and email integration",
+    "status": "todo",
+    "priority": "low",
+    "dueDate": "2024-03-10T00:00:00.000Z",
+    "createdAt": "2024-02-08T16:45:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 6,
+    "projectId": 2,
+    "title": "User authentication system",
+    "description": "Implement secure login and registration functionality with JWT tokens",
+    "status": "inprogress",
+    "priority": "high",
+    "dueDate": "2024-02-25T00:00:00.000Z",
+    "createdAt": "2024-01-20T15:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 7,
+    "projectId": 2,
+    "title": "Design onboarding screens",
+    "description": "Create intuitive onboarding flow with welcome screens and feature highlights",
+    "status": "done",
+    "priority": "medium",
+    "dueDate": "2024-02-20T00:00:00.000Z",
+    "createdAt": "2024-01-22T10:30:00.000Z",
+    "completedAt": "2024-02-19T13:15:00.000Z"
+  },
+  {
+    "Id": 8,
+    "projectId": 2,
+    "title": "Push notifications setup",
+    "description": "Configure push notifications for important app events and user engagement",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2024-03-15T00:00:00.000Z",
+    "createdAt": "2024-02-01T11:20:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 9,
+    "projectId": 2,
+    "title": "App store optimization",
+    "description": "Optimize app listing with keywords, screenshots, and compelling description",
+    "status": "todo",
+    "priority": "low",
+    "dueDate": "2024-03-20T00:00:00.000Z",
+    "createdAt": "2024-02-05T09:45:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 10,
+    "projectId": 3,
+    "title": "Social media content calendar",
+    "description": "Plan and schedule social media posts for the next quarter across all platforms",
+    "status": "inprogress",
+    "priority": "high",
+    "dueDate": "2024-02-28T00:00:00.000Z",
+    "createdAt": "2024-02-01T14:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 11,
+    "projectId": 3,
+    "title": "Email marketing templates",
+    "description": "Design responsive email templates for newsletters and promotional campaigns",
+    "status": "done",
+    "priority": "medium",
+    "dueDate": "2024-02-22T00:00:00.000Z",
+    "createdAt": "2024-02-02T16:30:00.000Z",
+    "completedAt": "2024-02-21T11:45:00.000Z"
+  },
+  {
+    "Id": 12,
+    "projectId": 3,
+    "title": "Influencer outreach campaign",
+    "description": "Identify and reach out to relevant influencers for partnership opportunities",
+    "status": "todo",
+    "priority": "low",
+    "dueDate": "2024-03-08T00:00:00.000Z",
+    "createdAt": "2024-02-08T13:15:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 13,
+    "projectId": 4,
+    "title": "Backup current database",
+    "description": "Create comprehensive backup of existing database before migration process",
+    "status": "done",
+    "priority": "high",
+    "dueDate": "2024-02-12T00:00:00.000Z",
+    "createdAt": "2024-02-10T17:00:00.000Z",
+    "completedAt": "2024-02-11T20:30:00.000Z"
+  },
+  {
+    "Id": 14,
+    "projectId": 4,
+    "title": "Test migration scripts",
+    "description": "Thoroughly test all migration scripts in development environment",
+    "status": "inprogress",
+    "priority": "high",
+    "dueDate": "2024-02-26T00:00:00.000Z",
+    "createdAt": "2024-02-12T08:45:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 15,
+    "projectId": 4,
+    "title": "Update application connections",
+    "description": "Modify application configuration to connect to new database system",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2024-03-02T00:00:00.000Z",
+    "createdAt": "2024-02-15T12:20:00.000Z",
+    "completedAt": null
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "name": "Website Redesign",
+    "color": "#8B5CF6",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "taskCount": 8
+  },
+  {
+    "Id": 2,
+    "name": "Mobile App Development",
+    "color": "#3B82F6",
+    "createdAt": "2024-01-20T14:30:00.000Z",
+    "taskCount": 12
+  },
+  {
+    "Id": 3,
+    "name": "Marketing Campaign",
+    "color": "#10B981",
+    "createdAt": "2024-02-01T09:15:00.000Z",
+    "taskCount": 6
+  },
+  {
+    "Id": 4,
+    "name": "Database Migration",
+    "color": "#F59E0B",
+    "createdAt": "2024-02-10T16:45:00.000Z",
+    "taskCount": 4
+  }
+]
